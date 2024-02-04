@@ -9,7 +9,7 @@ import { useRef } from "react";
 
 const ChatRoom = () => {
   const messagesRef = collection(db, "messages");
-  const q = query(messagesRef, limit(25), orderBy("createdAt", "desc"));
+  const q = query(messagesRef, limit(50), orderBy("createdAt", "desc"));
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const [messages, loading, error] = useCollection(q, {});
@@ -26,10 +26,10 @@ const ChatRoom = () => {
   return (
     <div className=" bg-zinc-900">
       {/* <div className="background-gradient absolute inset-0 z-0  max-h-screen"></div> */}
-      <div className="pointer-events-none absolute inset-0 z-10 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
+
       <div className="narrow-container">
         <div className="mx-auto flex-col border">
-          <header className="sticky top-0 flex justify-between border-b-4 bg-zinc-900 px-4 py-6">
+          <header className="sticky top-0 flex justify-between border-b-4 bg-gray-700 px-4 py-6">
             <span className="text-3xl font-bold text-white">Free Talk ❤️‍🔥</span>
             <SignoutButton />
           </header>
