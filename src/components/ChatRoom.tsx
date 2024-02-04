@@ -9,7 +9,7 @@ import { useRef } from "react";
 
 const ChatRoom = () => {
   const messagesRef = collection(db, "messages");
-  const q = query(messagesRef, limit(25), orderBy("createdAt"));
+  const q = query(messagesRef, limit(25), orderBy("createdAt", "desc"));
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const [messages, loading, error] = useCollection(q, {});
@@ -41,17 +41,19 @@ const ChatRoom = () => {
             )}
             <div className="">
               {messages && !messages.empty ? (
-                messages.docs.map((msg) => {
-                  const msgData = msg.data() as TChatMessage;
-                  return (
-                    <ChatMessage
-                      text={msgData.text}
-                      key={msg.id}
-                      photoUrl={msgData.photoUrl}
-                      uid={msgData.uid}
-                    />
-                  );
-                })
+                messages.docs
+                  .map((msg) => {
+                    const msgData = msg.data() as TChatMessage;
+                    return (
+                      <ChatMessage
+                        text={msgData.text}
+                        key={msg.id}
+                        photoUrl={msgData.photoUrl}
+                        uid={msgData.uid}
+                      />
+                    );
+                  })
+                  .reverse()
               ) : (
                 <div className="flex flex-col items-center justify-start">
                   <span className="text-white">No new Messages</span>
