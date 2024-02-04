@@ -1,6 +1,5 @@
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/config";
-import { GiAtom } from "react-icons/gi";
 import { GiHeartburn } from "react-icons/gi";
 
 const Signin = () => {
