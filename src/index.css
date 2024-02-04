@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Oswald", sans-serif;
+}
+
+#root {
+  position: relative;
+}
+
+.parent-container {
+  display: grid;
+  min-height: 100dvh;
+  grid-template-rows: auto 1fr auto;
+}
+
+.background-gradient {
+  background: radial-gradient(
+    circle at center center,
+    hsla(222, 80%, 60%, 0.5) 0%,
+    hsla(222, 0%, 0%, 0) 50%,
+    hsla(222, 0%, 0%, 0) 100%
+  );
+}
+
+.narrow-container {
+  margin-inline: auto;
+  width: min(95%, 55.5rem);
+}
+
+.big-container {
+  margin-inline: auto;
+  width: min(95%, 85.5rem);
+}
+
+.sent {
+  background-color: blue;
+}
+.received {
+  background-color: gray;
+  color: black;
+}
