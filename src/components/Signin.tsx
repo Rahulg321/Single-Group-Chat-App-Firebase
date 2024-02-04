@@ -1,6 +1,7 @@
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/config";
 import { GiAtom } from "react-icons/gi";
+import { GiHeartburn } from "react-icons/gi";
 
 const Signin = () => {
   const [signInWithGoogle] = useSignInWithGoogle(auth);
@@ -15,7 +16,7 @@ const Signin = () => {
             className="animate-spin text-[10rem] text-white transition md:text-[20rem]"
             style={{ animationDuration: "6s" }}
           >
-            <GiAtom />
+            <GiHeartburn />
           </div>
         </div>
         <div className="flex flex-1 flex-col items-center justify-start gap-6 md:justify-center">

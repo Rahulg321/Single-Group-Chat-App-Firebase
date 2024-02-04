@@ -15,10 +15,12 @@ const NewMessageForm = ({
   classname,
 }: NewMessageFormProps) => {
   const [formText, setFormText] = useState("");
+  const [loading, setLoading] = useState(false);
   const [user] = useAuthState(auth);
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     try {
       // Add a new document with a generated id.
       const docRef = await addDoc(collection(db, "messages"), {
@@ -33,6 +35,7 @@ const NewMessageForm = ({
       console.log(error);
     }
 
+    setLoading(false);
     setFormText("");
   };
 
@@ -46,10 +49,11 @@ const NewMessageForm = ({
         className="basis-3/4 "
       />
       <button
+        disabled={loading || formText === ""}
         type="submit"
         className="basis-1/4  bg-green-400 px-4 py-6 transition hover:bg-green-600"
       >
-        Send
+        {loading ? "sending" : "send"}
       </button>
     </form>
   );
