@@ -1,8 +1,6 @@
-import React from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/config";
 import { GiAtom } from "react-icons/gi";
-import noisetexture from "../../public/noisetexture.jpg";
 
 const Signin = () => {
   const [signInWithGoogle] = useSignInWithGoogle(auth);

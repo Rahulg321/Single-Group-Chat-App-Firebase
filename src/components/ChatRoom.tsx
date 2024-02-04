@@ -1,6 +1,5 @@
-import React from "react";
 import SignoutButton from "./SignoutButton";
-import { collection, query, where, limit, orderBy } from "firebase/firestore";
+import { collection, query, limit, orderBy } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { useCollection } from "react-firebase-hooks/firestore";
 import ChatMessage from "./ChatMessage";

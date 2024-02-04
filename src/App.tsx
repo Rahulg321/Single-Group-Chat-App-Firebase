@@ -4,6 +4,6 @@ import ChatRoom from "./components/ChatRoom";
 import Signin from "./components/Signin";
 
 export default function App() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   return <>{user ? <ChatRoom /> : <Signin />}</>;
 }

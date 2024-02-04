@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db, auth } from "../firebase/config";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -15,7 +15,7 @@ const NewMessageForm = ({
   classname,
 }: NewMessageFormProps) => {
   const [formText, setFormText] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

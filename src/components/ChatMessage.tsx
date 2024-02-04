@@ -1,5 +1,3 @@
-import React from "react";
-import { TChatMessage } from "../types";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/config";
 import clsx from "clsx";
@@ -11,7 +9,7 @@ type ChatMessageProps = {
 };
 
 const ChatMessage = ({ text, photoUrl, uid }: ChatMessageProps) => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   const msgClass = uid === user?.uid ? "sent" : "recieved";
 
