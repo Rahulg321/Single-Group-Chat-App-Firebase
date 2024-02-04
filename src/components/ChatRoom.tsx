@@ -21,7 +21,7 @@ const ChatRoom = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  console.log(messages);
+  console.log("empty messages are ", messages);
 
   return (
     <div className="bg-zinc-900">
@@ -34,18 +34,28 @@ const ChatRoom = () => {
             <SignoutButton />
           </header>
           <div className=" bg-gray-900">
-            {loading && <span>Loading messages.......</span>}
-            {messages?.docs.map((msg) => {
-              const msgData = msg.data() as TChatMessage;
-              return (
-                <ChatMessage
-                  text={msgData.text}
-                  key={msg.id}
-                  photoUrl={msgData.photoUrl}
-                  uid={msgData.uid}
-                />
-              );
-            })}
+            {loading && (
+              <div className="flex min-h-screen flex-col items-center justify-start">
+                <span className="text-white">Loading Messages..........</span>
+              </div>
+            )}
+            {messages && !messages.empty ? (
+              messages.docs.map((msg) => {
+                const msgData = msg.data() as TChatMessage;
+                return (
+                  <ChatMessage
+                    text={msgData.text}
+                    key={msg.id}
+                    photoUrl={msgData.photoUrl}
+                    uid={msgData.uid}
+                  />
+                );
+              })
+            ) : (
+              <div className="flex min-h-screen flex-col items-center justify-start">
+                <span className="text-white">No new Messages</span>
+              </div>
+            )}
             <div ref={scrollRef}></div>
           </div>
 
