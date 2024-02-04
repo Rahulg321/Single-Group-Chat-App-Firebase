@@ -17,9 +17,6 @@ const ChatRoom = () => {
   //     return null;
   //   }
 
-  if (loading) {
-    return <div>Fetching Messages</div>;
-  }
   if (error) {
     return <div>Error: {error.message}</div>;
   }
@@ -37,6 +34,7 @@ const ChatRoom = () => {
             <SignoutButton />
           </header>
           <div className=" bg-gray-900">
+            {loading && <span>Loading messages.......</span>}
             {messages?.docs.map((msg) => {
               const msgData = msg.data() as TChatMessage;
               return (

@@ -18,7 +18,7 @@ const Signin = () => {
             <GiAtom />
           </div>
         </div>
-        <div className="flex flex-1 flex-col items-center justify-center gap-6">
+        <div className="flex flex-1 flex-col items-center justify-start gap-6 md:justify-center">
           <span className="text-4xl font-extrabold text-white md:text-[4rem] ">
             Techno Club
           </span>

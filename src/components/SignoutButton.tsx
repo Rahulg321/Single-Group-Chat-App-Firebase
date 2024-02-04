@@ -9,7 +9,7 @@ const SignoutButton = () => {
       onClick={async () => {
         const success = await signOut();
         if (success) {
-          alert("You are sign out");
+          alert("You have been logged out");
         }
       }}
     >
